@@ -4,9 +4,9 @@
   "description": "A simple and lightweight RSS aggregator / reader",
   "main": "src/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --progress --watch",
     "dev": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "backend": "hoodie"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,14 @@
   "dependencies": {
     "flyd": "^0.2.4",
     "folktale": "^2.0.0-rc1",
+    "hoodie": "^28.2.1",
     "mithril": "^1.1.1",
+    "pouchdb": "^6.2.0",
     "ramda": "^0.24.1"
+  },
+  "hoodie": {
+    "address": "0.0.0.0",
+    "port": "8081",
+    "public": "dist"
   }
 }

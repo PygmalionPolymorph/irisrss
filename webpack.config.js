@@ -1,4 +1,6 @@
-var path = require('path');
+const path = require('path');
+const webpack = require('webpack');
+
 
 module.exports = {
 	entry: './src/index.js',
@@ -6,6 +8,9 @@ module.exports = {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 	},
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   module: {
     rules: [
       {

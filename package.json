@@ -1,0 +1,36 @@
+{
+  "name": "irisrss",
+  "version": "0.0.1",
+  "description": "A simple and lightweight RSS aggregator / reader",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PygmalionPolymorph/irisrss.git"
+  },
+  "keywords": [
+    "rss"
+  ],
+  "author": "PygmalionPolymorph",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PygmalionPolymorph/irisrss/issues"
+  },
+  "homepage": "https://github.com/PygmalionPolymorph/irisrss#readme",
+  "devDependencies": {
+    "css-loader": "^0.28.4",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.1.0",
+    "webpack-dev-server": "^2.5.1"
+  },
+  "dependencies": {
+    "flyd": "^0.2.4",
+    "folktale": "^2.0.0-rc1",
+    "mithril": "^1.1.1",
+    "ramda": "^0.24.1"
+  }
+}

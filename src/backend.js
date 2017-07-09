@@ -1,10 +1,23 @@
 import Hoodie from '@hoodie/client';
+import Store from '@hoodie/store-client';
 import PouchDB from 'pouchdb';
 
 const hoodie = new Hoodie({
   url: 'http://192.168.69.69:8081',
   PouchDB
 });
+
+function createStore(hoodie, name) {
+  hoodie[name] = new Store(name, {
+    PouchDB,
+    remote: `http://localhost:5894/${name}`
+  });
+}
+
+['entries', 'feeds'].forEach((store) => {
+  createStore(hoodie, store);
+});
+
 
 export function signIn(username, password) {
   return hoodie.account.signIn({username, password})
@@ -14,5 +27,8 @@ export function signIn(username, password) {
     hoodie.log.error(error);
   });
 }
+
+// Debug
+window.h = hoodie;
 
 export default hoodie;

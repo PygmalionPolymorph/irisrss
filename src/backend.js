@@ -4,13 +4,13 @@ import PouchDB from 'pouchdb';
 
 const hoodie = new Hoodie({
   url: 'http://192.168.69.69:8081',
-  PouchDB
+  PouchDB,
 });
 
-function createStore(hoodie, name) {
-  hoodie[name] = new Store(name, {
+function createStore(hoodieInstance, name) {
+  hoodieInstance[name] = new Store(name, { // eslint-disable-line no-param-reassign
     PouchDB,
-    remote: `http://localhost:5894/${name}`
+    remote: `http://localhost:5894/${name}`,
   });
 }
 
@@ -20,12 +20,12 @@ function createStore(hoodie, name) {
 
 
 export function signIn(username, password) {
-  return hoodie.account.signIn({username, password})
-  .then((attributes) => {
-    hoodie.log.info(`Signed in as ${attributes.username}`);
-  }).catch((error) => {
-    hoodie.log.error(error);
-  });
+  return hoodie.account.signIn({ username, password })
+    .then((attributes) => {
+      hoodie.log.info(`Signed in as ${attributes.username}`);
+    }).catch((error) => {
+      hoodie.log.error(error);
+    });
 }
 
 // Debug

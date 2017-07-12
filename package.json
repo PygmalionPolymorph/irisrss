@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --progress --watch",
     "dev": "webpack-dev-server",
-    "backend": "hoodie"
+    "backend": "hoodie",
+    "start": "hoodie"
   },
   "repository": {
     "type": "git",
@@ -23,11 +24,16 @@
   "homepage": "https://github.com/PygmalionPolymorph/irisrss#readme",
   "devDependencies": {
     "css-loader": "^0.28.4",
+    "eslint": "^4.2.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.7.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.5.1"
   },
   "dependencies": {
+    "@hoodie/client": "^10.1.0",
+    "@hoodie/store-client": "^8.1.2",
     "flyd": "^0.2.4",
     "folktale": "^2.0.0-rc1",
     "hoodie": "^28.2.1",

@@ -37,9 +37,11 @@
     "flyd": "^0.2.4",
     "folktale": "^2.0.0-rc1",
     "hoodie": "^28.2.1",
+    "kaleido": "0.0.5",
     "mithril": "^1.1.1",
     "pouchdb": "^6.2.0",
-    "ramda": "^0.24.1"
+    "ramda": "^0.24.1",
+    "xml-parser": "^1.2.1"
   },
   "hoodie": {
     "address": "0.0.0.0",

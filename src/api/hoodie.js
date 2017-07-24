@@ -3,7 +3,7 @@ import Store from '@hoodie/store-client';
 import PouchDB from 'pouchdb';
 
 const hoodie = new Hoodie({
-  url: 'http://192.168.69.69:8081',
+  url: 'http://localhost:8081',
   PouchDB,
 });
 

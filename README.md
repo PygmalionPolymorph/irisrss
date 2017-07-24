@@ -6,3 +6,4 @@ Lightweight self-hosted RSS aggregator / reader.
 * Start the backend with ```npm run backend```
 * Start the appserver with ```npm run dev```
 * Have fun.
+

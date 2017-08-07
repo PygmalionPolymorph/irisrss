@@ -12,7 +12,7 @@ export default function FeedList() {
 
   return {
     oninit: () => {
-      findAllFeeds().then(feeds.set).then(m.redraw);
+      findAllFeeds().then(feeds.set);
     },
     view: () => m(feedList, feeds.get().map(f => m(FeedListItem, { feed: f }))),
   };

@@ -14,3 +14,7 @@ m.mount(document.querySelector('#app'), App);
 
 window.state = state;
 state.map(m.redraw);
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+}

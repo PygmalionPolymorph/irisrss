@@ -5,7 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --progress --watch",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "couch": "docker-compose up -d",
+    "cors": "node src/server/cors.js"
   },
   "repository": {
     "type": "git",
@@ -25,18 +27,23 @@
     "eslint": "^4.2.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.7.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
     "style-loader": "^0.18.2",
     "sw-precache-webpack-plugin": "^0.11.4",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.5.1"
   },
   "dependencies": {
+    "cors-anywhere": "^0.4.0",
     "flyd": "^0.2.4",
     "folktale": "^2.0.0-rc1",
-    "kaleido": "0.0.5",
+    "kaleido": "^0.2.1",
     "mithril": "^1.1.1",
+    "moment": "^2.18.1",
     "pouchdb": "^6.3.4",
     "ramda": "^0.24.1",
+    "rss-parser": "^2.10.1",
     "xml-parser": "^1.2.1"
   }
 }

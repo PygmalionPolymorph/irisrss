@@ -8,10 +8,13 @@ module.exports = {
     main: path.resolve(__dirname, 'src'),
   },
   output: {
-    filename: '[name]-[hash].js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   devtool: 'inline-source-map',
+  node: {
+    fs: 'empty',
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new SWPrecacheWebpackPlugin({
@@ -26,10 +29,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.less$/,
         use: [
           'style-loader',
           'css-loader',
+          'less-loader',
         ],
       },
     ],

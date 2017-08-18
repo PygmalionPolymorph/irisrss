@@ -1,20 +1,14 @@
 import m from 'mithril';
+import R from 'ramda';
 import { state } from 'kaleido';
 
-import { signIn } from './api/hoodie';
+import './view/style/main.less';
 
 import App from './view/layout/app';
-
-// Debug
-window.m = m;
-
-signIn('admin', 'admin');
 
 m.mount(document.querySelector('#app'), App);
 
 window.state = state;
+window.R = R;
+window.redraw = m.redraw;
 state.map(m.redraw);
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js');
-}

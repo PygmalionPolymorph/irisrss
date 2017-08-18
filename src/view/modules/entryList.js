@@ -4,19 +4,25 @@ import scope from 'kaleido';
 import Entry from '../components/entry';
 
 function EntryList() {
-  const selectedFeed = scope(['feeds', 'selected'], '');
   const entries = scope(['entries', 'list'], []);
+  const selectedEntry = scope(['entries', 'selected'], '');
 
-  window.selectedFeed = selectedFeed;
+  const Actions = {
+    selectEntry: entry => () => {
+      selectedEntry.set(entry._id);
+    },
+  };
 
-  const entryList = '.flex.flex-column.items-center.justify-start.w-100';
+  const entryList = '.entry-list';
 
   return {
-    oninit: () => {
-    },
-    view: () => m(entryList, [
-      entries.get().map(entry => m(Entry, entry)),
-    ]),
+    view: () => m(entryList,
+      entries.get().map(entry => m(Entry, Object.assign({}, entry, {
+        key: entry._id,
+        onclick: Actions.selectEntry(entry),
+        selected: entry._id === selectedEntry.get(),
+      }), selectedEntry.get())),
+    ),
   };
 }
 

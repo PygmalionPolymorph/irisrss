@@ -1,18 +1,8 @@
-import parse from 'xml-parser';
-import { mergeAll, path, filter, propEq, compose, map, converge, objOf, prop } from 'ramda';
-
+import parser from 'rss-parser';
+import { fromNodeback } from 'folktale/concurrency/task';
 import { getText } from './http';
 
-const extractRSS = compose(
-  map(mergeAll),
-  map(map(converge(objOf, [prop('name'), prop('content')]))),
-  map(path(['children'])),
-  filter(propEq('name', 'item')),
-  path(['root', 'children', '0', 'children']),
-);
-
-const fetchFeed = feed => getText(feed.url)
-  .map(parse)
-  .map(extractRSS);
+// Feed -> Task([Entry])
+const fetchFeed = feed => getText(feed.url).chain(fromNodeback(parser.parseString));
 
 export default fetchFeed;

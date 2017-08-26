@@ -4,18 +4,18 @@ import FeedList from '../modules/feedList';
 import EntryList from '../modules/entryList';
 import Header from '../modules/header';
 
-import { bind } from '../../logic/reactions';
+import { bind, init } from '../../logic/reactions';
 
 function App() {
+  init();
   bind();
 
   return {
-    view: () => (
-      console.log('redraw') || [
-        m(Header),
-        m(FeedList),
-        m(EntryList),
-      ]),
+    view: () => [
+      m(Header),
+      m(FeedList),
+      m(EntryList),
+    ],
   };
 }
 

@@ -1,14 +1,18 @@
 import scope from 'kaleido';
+import { of } from 'folktale/concurrency/task';
 import { ifElse, assoc, last, identity } from 'ramda';
 
-import { updateUnreadCount, findFeed } from './feeds';
+import { addUnreadCount, findFeed, updateAllFeedEntries, updateFeedEntries, updateFeed } from './feeds';
 import { findEntry, updateEntry, onlyUnread, findAllEntries, extractEntries, filterByFeed } from './entries';
 
 const unreadCount = (feed) => {
   const feeds = scope(['feeds', 'list']);
 
-  updateUnreadCount(feeds)(feed)
-    .run();
+  if (feed) {
+    addUnreadCount(feed)
+      .chain(updateFeed(feeds))
+      .run();
+  }
 };
 
 const updateEntryList = (feed) => {
@@ -18,7 +22,10 @@ const updateEntryList = (feed) => {
 
   const selected = (feed && feed.name) || (selectedFeed.get() && selectedFeed.get().name);
 
-  findAllEntries()
+  const start = selected && feed ? updateFeedEntries(feed) : of(true);
+
+  start
+    .chain(findAllEntries)
     .map(extractEntries)
     .map(es => (selected ? filterByFeed(selected)(es) : es))
     .map(ifElse(showOnlyUnread.get, onlyUnread, identity))
@@ -35,7 +42,8 @@ const markAsRead = (entry) => {
       updateEntry(entries)(assoc('read', true, e))
         .and(findFeed(e.feed))))
     .map(last)
-    .chain(updateUnreadCount(feeds))
+    .chain(addUnreadCount)
+    .chain(updateFeed(feeds))
     .run();
 };
 
@@ -50,3 +58,8 @@ export const bind = () => {
   selectedEntry.$.map(markAsRead);
 };
 
+export const init = () => {
+  updateAllFeedEntries()
+    .map(tasks => tasks.map(task => task.run()))
+    .run();
+};

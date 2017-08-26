@@ -1,5 +1,6 @@
 import m from 'mithril';
 import scope from 'kaleido';
+import { slice } from 'ramda';
 
 import Entry from '../components/entry';
 
@@ -17,7 +18,7 @@ function EntryList() {
 
   return {
     view: () => m(entryList,
-      entries.get().map(entry => m(Entry, Object.assign({}, entry, {
+      slice(0, 30, entries.get()).map(entry => m(Entry, Object.assign({}, entry, {
         key: entry._id,
         onclick: Actions.selectEntry(entry),
         selected: entry._id === selectedEntry.get(),

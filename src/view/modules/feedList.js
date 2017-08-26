@@ -1,7 +1,7 @@
 import m from 'mithril';
 import scope from 'kaleido';
 
-import { findAllFeeds } from '../../logic/feeds';
+import { refreshFeeds } from '../../logic/feeds';
 
 import FeedListItem from '../components/feedListItem';
 import FeedForm from '../modules/feedForm';
@@ -14,7 +14,7 @@ export default function FeedList() {
 
   return {
     oninit: () => {
-      findAllFeeds().map(feeds.set).run();
+      refreshFeeds(feeds).run();
     },
     view: () => m('.feed-list', [
       feeds.get().map((f, i) => m(FeedListItem, { feed: f, index: i % 3 })),

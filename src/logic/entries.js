@@ -1,5 +1,6 @@
-import { fromPromised, task } from 'folktale/concurrency/task';
-import { path, compose, merge, map, filter, propEq, prop, anyPass, complement, has, length } from 'ramda';
+import { fromPromised, task, of } from 'folktale/concurrency/task';
+import { path, compose, merge, map, filter, propEq, prop, anyPass, complement, has, length,
+  traverse, assoc } from 'ramda';
 
 import db from '../api/pouchdb';
 import { dateId, forceId } from './ids';
@@ -27,12 +28,19 @@ export const extractEntries = compose(map(prop('doc')), prop('rows'));
 // String -> [Entry] -> [Entry]
 export const filterByFeed = feedName => filter(propEq('feed', feedName));
 
+export const entriesForFeed = feedName => findAllEntries()
+  .map(extractEntries)
+  .map(filterByFeed(feedName));
+
 // [Entry] -> [Entry]
 export const onlyUnread = filter(anyPass([propEq('read', false), complement(has('read'))]));
 
 // [Entry] -> Int
 export const unreadCount = compose(length, onlyUnread);
 
+export const markAllAsRead = entries => feedName => entriesForFeed(feedName)
+  .map(map(assoc('read', true)))
+  .chain(traverse(of, updateEntry(entries)));
 
 // String -> [Entry] -> Task [PouchDBResult]
 export const addEntries = feedName => fromPromised(compose(

@@ -1,7 +1,7 @@
 import m from 'mithril';
 import scope from 'kaleido';
 
-import { refreshFeeds } from '../../logic/feeds';
+import { refreshFeeds } from '../../logic/feeds/update';
 
 import FeedListItem from '../components/feedListItem';
 import FeedForm from '../modules/feedForm';

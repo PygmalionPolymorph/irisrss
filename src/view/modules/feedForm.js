@@ -3,7 +3,7 @@ import scope from 'kaleido';
 
 import { compose, path } from 'ramda';
 
-import { addFeed } from '../../logic/feeds';
+import { addFeed } from '../../logic/feeds/add';
 
 export default function FeedForm() {
   const show = scope(['modal', 'addFeed'], undefined);

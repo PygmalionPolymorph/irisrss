@@ -1,8 +1,6 @@
 import m from 'mithril';
 import scope from 'kaleido';
 
-import { removeFeed } from '../../logic/feeds';
-
 export default function FeedListItem(vnode) {
   const { feed, index } = vnode.attrs;
   const selectedFeed = scope(['feeds', 'selected'], '');
@@ -10,9 +8,6 @@ export default function FeedListItem(vnode) {
   const isSelected = selectedFeed.get() === feed._id;
 
   const Actions = {
-    removeFeed: () => {
-      removeFeed(feed);
-    },
     selectFeed: () => {
       selectedFeed.set(feed);
     },
@@ -32,9 +27,7 @@ export default function FeedListItem(vnode) {
           onclick: Actions.selectFeed,
         }, feed.name),
         m(unread, feed.unreadCount),
-        m(deleteButton, {
-          onclick: Actions.removeFeed,
-        }, 'X'),
+        m(deleteButton, { onclick: ()=>{} }, 'X'),
       ]);
     },
   };

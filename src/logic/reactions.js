@@ -2,8 +2,11 @@ import scope from 'kaleido';
 import { of } from 'folktale/concurrency/task';
 import { ifElse, assoc, last, identity } from 'ramda';
 
-import { addUnreadCount, findFeed, updateAllFeedEntries, updateFeedEntries, updateFeed } from './feeds';
-import { findEntry, updateEntry, onlyUnread, findAllEntries, extractEntries, filterByFeed } from './entries';
+import { addUnreadCount, onlyUnread } from './readState';
+import { findFeed } from './feeds/find';
+import { updateAllFeedEntries, updateFeedEntries, updateFeed } from './feeds/update';
+import { findEntry, findAllEntries, extractEntries, filterByFeed } from './entries/find';
+import { updateEntry } from './entries/update';
 
 const unreadCount = (feed) => {
   const feeds = scope(['feeds', 'list']);
@@ -20,7 +23,7 @@ const updateEntryList = (feed) => {
   const selectedFeed = scope(['feeds', 'selected']);
   const showOnlyUnread = scope(['filters', 'onlyUnread']);
 
-  const selected = (feed && feed.name) || (selectedFeed.get() && selectedFeed.get().name);
+  const selected = feed || selectedFeed.get();
 
   const start = selected && feed ? updateFeedEntries(feed) : of(true);
 

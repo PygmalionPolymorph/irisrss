@@ -8,6 +8,7 @@ import App from './view/layout/app';
 
 m.mount(document.querySelector('#app'), App);
 
+console.l = x => console.log(x) || x;
 window.state = state;
 window.R = R;
 window.redraw = m.redraw;

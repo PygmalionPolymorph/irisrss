@@ -6,7 +6,6 @@ import { markAllAsRead } from '../../logic/entries/update';
 export default function Header() {
   const selectedFeed = scope(['feeds', 'selected'], undefined);
   const onlyUnread = scope(['filters', 'onlyUnread'], false);
-  const feeds = scope(['feeds', 'list']);
   const entries = scope(['entries', 'list']);
 
   const h1 = 'h1.header__headline';
@@ -20,7 +19,7 @@ export default function Header() {
     },
     markAllAsRead: () => {
       if (selectedFeed.get()) {
-        markAllAsRead(feeds)(entries)(selectedFeed.get()).run();
+        markAllAsRead(entries)(selectedFeed.get()).run();
       }
     },
   };

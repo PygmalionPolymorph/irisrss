@@ -8,6 +8,8 @@ function EntryList() {
   const entries = scope(['entries', 'list'], []);
   const selectedEntry = scope(['entries', 'selected'], '');
 
+  window.entries = entries;
+
   const Actions = {
     selectEntry: entry => () => {
       selectedEntry.set(entry._id);

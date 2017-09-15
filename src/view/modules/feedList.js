@@ -17,7 +17,7 @@ export default function FeedList() {
       refreshFeeds(feeds).run();
     },
     view: () => m('.feed-list', [
-      feeds.get().map((f, i) => m(FeedListItem, { feed: f, index: i % 3 })),
+      feeds.get().map((f, i) => m(FeedListItem, { key: f._id, feed: f, index: i % 3 })),
       m(FeedForm),
       m(AddButton),
       m(CancelButton),

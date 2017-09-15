@@ -1,8 +1,11 @@
 import m from 'mithril';
 import scope from 'kaleido';
 
+import { removeFeed } from '../../logic/feeds/remove';
+
 export default function FeedListItem(vnode) {
   const { feed, index } = vnode.attrs;
+  const feeds = scope(['feeds', 'list']);
   const selectedFeed = scope(['feeds', 'selected'], '');
 
   const isSelected = selectedFeed.get() === feed._id;
@@ -10,6 +13,9 @@ export default function FeedListItem(vnode) {
   const Actions = {
     selectFeed: () => {
       selectedFeed.set(feed);
+    },
+    removeFeed: () => {
+      removeFeed(feeds)(feed).run();
     },
   };
 
@@ -19,15 +25,13 @@ export default function FeedListItem(vnode) {
   const feedListItem = `.feed-list__item.feed-item.feed-item--${index}${isSelected ? '.feed-item--selected' : ''}`;
 
   return {
-    view(vnode) {
-      const { feed } = vnode.attrs;
-
+    view() {
       return m(feedListItem, [
         m(heading, {
           onclick: Actions.selectFeed,
         }, feed.name),
         m(unread, feed.unreadCount),
-        m(deleteButton, { onclick: ()=>{} }, 'X'),
+        m(deleteButton, { onclick: Actions.removeFeed }, 'X'),
       ]);
     },
   };

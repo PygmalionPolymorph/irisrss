@@ -2,29 +2,32 @@ import m from 'mithril';
 import { compose } from 'ramda';
 import scope from 'kaleido';
 
+import { addFeed } from '../../logic/feeds/add';
+
 export default function AddButton() {
-  const addFeed = scope(['modal', 'addFeed'], false);
+  const addFeedModal = scope(['modal', 'addFeed'], false);
+  const feedList = scope(['feeds', 'list']);
   const feedName = scope(['feeds', 'form', 'name'], '');
   const feedUrl = scope(['feeds', 'form', 'url'], '');
 
   const Actions = {
-    openAddForm: () => { addFeed.set(true); },
+    openAddForm: () => { addFeedModal.set(true); },
     addFeed: () => {
-      addFeed({
+      addFeed(feedList)({
         name: feedName.get(),
         url: feedUrl.get(),
       }).run();
     },
-    closeModal: () => addFeed.set(false),
+    closeModal: () => addFeedModal.set(false),
   };
 
   const button = 'button.button--add';
 
   return {
     view() {
-      const label = addFeed.get() ? '✓' : '+';
+      const label = addFeedModal.get() ? '✓' : '+';
 
-      const onclick = addFeed.get()
+      const onclick = addFeedModal.get()
         ? compose(Actions.closeModal, Actions.addFeed)
         : Actions.openAddForm;
 

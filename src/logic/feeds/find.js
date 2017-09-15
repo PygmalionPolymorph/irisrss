@@ -9,5 +9,7 @@ export const findAllFeeds = () => fromPromised(() => db.feeds.allDocs({ include_
   .map(map(prop('doc')));
 
 // String -> Task Feed
-export const findFeed = fromPromised(id => db.feeds.get(id));
+export const findFeed = id => fromPromised(() => db.feeds.get(id))();
+
+window.findF = findFeed;
 

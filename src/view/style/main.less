@@ -7,6 +7,8 @@
   --main-color0: #f70e67;
   --main-color1: #67f70e;
   --main-color2: #0e67f7;
+  --positive-color: #37ba40;
+  --negative-color: #c92626;
 }
 
 * {
@@ -115,7 +117,11 @@ body {
   z-index: 1;
 
   &:hover {
-    color: white;
+    .feed-item__unread,
+    .feed-item__title,
+    .feed-item__delete {
+      color: white;
+    }
   }
 
   &:after {
@@ -214,6 +220,42 @@ body {
 
 .btn {
   color: var(--black);
+  padding: 1em;
+  border-radius: .2em;
   background: none;
   border: none;
+}
+
+.btn--confirm {
+  background-color: var(--positive-color);
+}
+
+.btn--cancel {
+  background-color: var(--negative-color);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3em;
+  background: white;
+  display: none;
+}
+
+.modal--visible {
+  display: block;
+}
+
+.confirm-box__text:hover {
+  color: var(--black);
+}
+
+.confirm-box__buttons {
+  text-align: center;
+}
+
+.btn + .btn {
+  margin-left: 1em;
 }

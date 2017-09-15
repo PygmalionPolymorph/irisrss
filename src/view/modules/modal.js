@@ -3,7 +3,7 @@ import scope from 'kaleido';
 
 export default function Modal(vnode) {
   const { targetScope } = vnode.attrs;
-  const showModal = scope(['modal', targetScope]);
+  const showModal = scope(['modal'].concat(targetScope), false);
 
   return {
     view: (vn) => {

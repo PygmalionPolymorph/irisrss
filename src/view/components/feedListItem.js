@@ -26,10 +26,10 @@ export default function FeedListItem(vnode) {
 
   return {
     view() {
-      return m(feedListItem, [
-        m(heading, {
-          onclick: Actions.selectFeed,
-        }, feed.name),
+      return m(feedListItem, {
+        onclick: Actions.selectFeed,
+      }, [
+        m(heading, feed.name),
         m(unread, feed.unreadCount),
         m(deleteButton, { onclick: Actions.removeFeed }, 'X'),
       ]);

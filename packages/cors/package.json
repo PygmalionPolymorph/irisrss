@@ -1,6 +1,6 @@
 {
   "name": "irisrss-cors",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js"
@@ -8,6 +8,6 @@
   "dependencies": {
     "cors-anywhere": "^0.4.1",
     "dotenv": "^6.0.0",
-    "irisrss-feedservice": "^0.0.1"
+    "irisrss-feedservice": "^0.1.0"
   }
 }

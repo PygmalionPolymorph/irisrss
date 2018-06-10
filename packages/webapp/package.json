@@ -1,6 +1,6 @@
 {
   "name": "irisrss-webapp",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Web frontend for IrisRSS",
   "main": "src/index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "folktale": "^2.1.0",
-    "irisrss-feedservice": "^0.0.1",
+    "irisrss-feedservice": "^0.1.0",
     "kaleido": "^0.2.1",
     "mithril": "^1.1.6",
     "moment": "^2.22.2",

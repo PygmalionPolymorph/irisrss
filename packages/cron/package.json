@@ -1,12 +1,12 @@
 {
   "name": "irisrss-cron",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "irisrss-feedservice": "^0.0.1",
+    "irisrss-feedservice": "^0.1.0",
     "node-cron": "^1.2.1"
   }
 }

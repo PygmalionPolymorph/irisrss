@@ -1,11 +1,11 @@
 {
   "name": "irisrss-db",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "start": "docker-compose up",
     "daemon": "docker-compose up -d"
   },
   "dependencies": {
-    "irisrss-feedservice": "^0.0.1"
+    "irisrss-feedservice": "^0.1.0"
   }
 }

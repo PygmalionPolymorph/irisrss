@@ -1,0 +1,10 @@
+82 error execute callback with error
+83 error Error: Command failed: npm install
+83 error npm ERR! code ERR_STREAM_WRITE_AFTER_END
+83 error npm ERR! write after end
+83 error
+83 error npm ERR! A complete log of this run can be found in:
+83 error npm ERR!     /home/hephaistos/.npm/_logs/2018-06-10T10_53_36_152Z-debug.log
+83 error
+83 error     at Promise.all.then.arr (/usr/lib/node_modules/lerna/node_modules/execa/index.js:236:11)
+83 error     at <anonymous>

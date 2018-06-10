@@ -1,0 +1,19 @@
+version: "2.1"
+services:
+  couchdb:
+    container_name: "couchdb"
+    image: "callforamerica/couchdb"
+    ports:
+      - "5984:5984"
+      - "5986:5986"
+    environment:
+      LOCAL_DEV_CLUSTER: 'true'
+      COUCHDB_ADMIN_USER: admin
+      COUCHDB_ADMIN_PASSWORD: admin
+      ERLANG_COOKIE: test-cookie
+    networks:
+      local:
+        aliases:
+        - couchdb.local
+networks:
+  local:

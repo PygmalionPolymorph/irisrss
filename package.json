@@ -2,13 +2,6 @@
   "name": "irisrss",
   "version": "0.0.1",
   "description": "A simple and lightweight RSS aggregator / reader",
-  "main": "src/index.js",
-  "scripts": {
-    "build": "webpack --progress --watch",
-    "dev": "webpack-dev-server",
-    "couch": "docker-compose up -d",
-    "cors": "node src/server/cors.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PygmalionPolymorph/irisrss.git"
@@ -23,26 +16,6 @@
   },
   "homepage": "https://github.com/PygmalionPolymorph/irisrss#readme",
   "devDependencies": {
-    "css-loader": "^0.28.4",
-    "eslint": "^4.2.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.7.0",
-    "less": "^2.7.2",
-    "less-loader": "^4.0.5",
-    "style-loader": "^0.18.2",
-    "sw-precache-webpack-plugin": "^0.11.4",
-    "webpack": "^3.1.0",
-    "webpack-dev-server": "^2.5.1"
-  },
-  "dependencies": {
-    "cors-anywhere": "^0.4.0",
-    "flyd": "^0.2.4",
-    "folktale": "^2.0.0-rc1",
-    "kaleido": "^0.2.1",
-    "mithril": "^1.1.1",
-    "moment": "^2.18.1",
-    "pouchdb": "^6.3.4",
-    "ramda": "^0.24.1",
-    "xml2js": "^0.4.19"
+    "lerna": "^2.11.0"
   }
 }

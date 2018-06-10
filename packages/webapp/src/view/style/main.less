@@ -1,0 +1,261 @@
+:root {
+  --white: #f3f3f3;
+  --closetowhite: #f9f9f9;
+  --black: #333;
+  --lightgray: #eee;
+  --darkgray: #555;
+  --main-color0: #f70e67;
+  --main-color1: #67f70e;
+  --main-color2: #0e67f7;
+  --positive-color: #37ba40;
+  --negative-color: #c92626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto auto;
+}
+
+.header__headline {
+  background-color: white;
+  display: inline-block;
+  grid-column: 1 / span 1;
+  font-size: 1.5em;
+  padding: 1em 1.5em .5em;
+  margin: 0;
+}
+
+.header__controls {
+  background-color: white;
+  display: flex;
+  padding-right: 2em;
+  justify-content: space-between;
+  grid-column: 2 / span 1;
+}
+
+.header__selected-feed {
+  display: inline-block;
+  font-size: 1.5em;
+  padding: 1em .4em .5em;
+  margin: 0;
+}
+
+.input--wide {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1em;
+  padding: 0.6em 0 0 1em;
+  cursor: pointer;
+  transition: all .2s ease;
+
+  &:hover {
+    background: var(--lightgray);
+  }
+}
+
+.spinner {
+  height: 3em;
+  width: 3em;
+  background-color: var(--main-color0);
+}
+
+.link {
+  color: var(--black);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button--add {
+  cursor: pointer;
+  color: var(--black);
+  border: 0;
+  font-weight: bold;
+  font-size: 1.3em;
+  padding: .2em 0;
+  background: white;
+  transition: all .2s ease;
+
+  &:hover {
+    background: var(--lightgray);
+  }
+}
+
+.feed-list {
+  display: inline-flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  padding: 0 0 3em;
+}
+
+.feed-list__item {
+  background-color: white;
+  display: block;
+  cursor: pointer;
+  padding: .4em 4em .4em 1em;
+  width: 100%;
+}
+
+.feed-item {
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    .feed-item__unread,
+    .feed-item__title,
+    .feed-item__delete {
+      color: white;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 8%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    transition: all .4s ease;
+    transform-origin: 100% 50%;
+    z-index: -1;
+  }
+
+  &:hover:after {
+    transform: scaleX(12.5);
+  }
+}
+
+.feed-item--0:after {
+  background-color: var(--main-color0);
+}
+.feed-item--1:after {
+  background-color: var(--main-color1);
+}
+.feed-item--2:after {
+  background-color: var(--main-color2);
+}
+
+.feed-item__delete {
+  color: white;
+  position: absolute;
+  right: .6em;
+  top: .2em;
+  font-size: .6em;
+  padding: .1em;
+  z-index: 1000;
+}
+
+
+.entry-list {
+  grid-column: 2 / span 1;
+  display: inline-flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.entry-list__item {
+  padding: .8em 1.4em .8em .8em;
+}
+
+.entry {
+  background-color: white;
+  border-bottom: 1px solid var(--lightgray);
+  transition: border .2s ease;
+}
+
+.entry--read {
+  background-color: var(--closetowhite);
+}
+
+.entry--selected {
+  border-left: 3px solid var(--main-color0);
+}
+
+.entry__header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.entry__header--expanded {
+  padding: .2em 0 .4em;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.entry__body {
+  padding: 1em 0;
+}
+
+.entry__meta {
+  font-size: .7em;
+  color: var(--darkgray);
+  cursor: default;
+}
+
+.entry__meta__item {
+  padding: .5em;
+  white-space: nowrap;
+}
+
+.controls__buttons {
+  display: flex;
+}
+
+.btn {
+  color: var(--black);
+  padding: 1em;
+  border-radius: .2em;
+  background: none;
+  border: none;
+}
+
+.btn--confirm {
+  background-color: var(--positive-color);
+}
+
+.btn--cancel {
+  background-color: var(--negative-color);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3em;
+  background: white;
+  display: none;
+}
+
+.modal--visible {
+  display: block;
+}
+
+.confirm-box__text:hover {
+  color: var(--black);
+}
+
+.confirm-box__buttons {
+  text-align: center;
+}
+
+.btn + .btn {
+  margin-left: 1em;
+}

@@ -4,6 +4,7 @@ const Dotenv = require('dotenv-webpack');
 // const BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
+  mode: 'development',
   entry: {
     main: path.resolve(__dirname, 'src'),
   },

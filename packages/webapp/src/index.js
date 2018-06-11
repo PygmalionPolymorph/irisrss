@@ -4,7 +4,5 @@ import App from './view';
 
 import './view/style/main.less';
 
-require('dotenv').config();
-
 m.mount(document.querySelector('#app'), App);
 state.map(m.redraw);

@@ -1,11 +1,11 @@
 import m from 'mithril';
-import moment from 'moment';
 
 // todo: move htmlUnescape
 const htmlUnescape = x => x;
 
 function formatDate(date) {
-  return moment(date).fromNow();
+  // todo: use dateFns to format date
+  return date.toString();
 }
 
 function Entry() {

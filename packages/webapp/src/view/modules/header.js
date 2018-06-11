@@ -36,7 +36,6 @@ export default function Header() {
     },
   };
 
-
   return {
     view() {
       const selectedFeedName = selectedFeed.get() ? selectedFeed.get().name : '';
@@ -44,16 +43,10 @@ export default function Header() {
       const markAsReadButton = 'button.btn.fa.fa-2x.fa-envelope-open';
       const onlyUnreadButton = `button.btn.fa.fa-2x${onlyUnread.get() ? '.fa-eye' : '.fa-eye-slash'}`;
 
-      console.log('selectedFeedName:', selectedFeedName);
-
       return [
-        m(h1, {
-          onclick: Actions.unselectFeed
-        }, 'IrisRSS'),
-        m('div.bla', ['asiduh'])
-        // m(controls),
-          /*
-          // m(h2, selectedFeedName),
+        m(h1, { onclick: Actions.unselectFeed }, 'IrisRSS'),
+        m(controls, [
+          m(h2, selectedFeedName),
           m(buttons, [
             selectedFeed.get()
               ? m(markAsReadButton, { onclick: Actions.markAllAsRead })
@@ -63,7 +56,6 @@ export default function Header() {
             }),
           ]),
         ]),
-            */
       ];
     },
   };

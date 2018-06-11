@@ -13,5 +13,5 @@ const addUnreadCount = feed => entriesForFeed(feed)
   .map(unreadCount)
   .map(c => assoc('unreadCount', c, feed));
 
-module.exports = { addUnreadCount };
+module.exports = { addUnreadCount, onlyUnread };
 

@@ -1,6 +1,6 @@
 import scope from 'kaleido';
 import { of } from 'folktale/concurrency/task';
-import { ifElse, assoc, last, identity } from 'ramda';
+import { ifElse, assoc, last, identity, o, isNil } from 'ramda';
 
 import { feeds, entries, readState } from 'irisrss-feedservice';
 
@@ -43,7 +43,8 @@ const markAsRead = (entry) => {
   findEntry(entry)
     .chain(e => (
       updateEntry(scopeEntries)(assoc('read', true, e))
-        .and(findFeed(e.feed))))
+        .and(findFeed(e.feed))
+    ))
     .map(last)
     .chain(addUnreadCount)
     .chain(updateFeed(scopeFeeds))

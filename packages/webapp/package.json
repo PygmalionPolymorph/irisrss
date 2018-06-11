@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build:dev": "webpack --mode='development'",
-    "dev": "webpack-serve ./webpack.config.js --mode='development'"
+    "dev": "webpack-serve ./webpack.config.js"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.5.1",
@@ -25,7 +25,6 @@
     "webpack-serve": "^1.0.4"
   },
   "dependencies": {
-    "dotenv": "^6.0.0",
     "folktale": "^2.1.0",
     "irisrss-feedservice": "^0.1.0",
     "kaleido": "^0.2.1",

@@ -13,8 +13,8 @@ export default function Header() {
   const scopeFeeds = scope(['feeds', 'list']);
 
   const h1 = 'h1.header__headline';
-  const controls = '.header__controls';
-  const buttons = '.controls__buttons';
+  const controls = 'div.header__controls';
+  const buttons = 'div.controls__buttons';
   const h2 = 'h2.header__selected-feed';
 
   const Actions = {
@@ -44,12 +44,16 @@ export default function Header() {
       const markAsReadButton = 'button.btn.fa.fa-2x.fa-envelope-open';
       const onlyUnreadButton = `button.btn.fa.fa-2x${onlyUnread.get() ? '.fa-eye' : '.fa-eye-slash'}`;
 
+      console.log('selectedFeedName:', selectedFeedName);
+
       return [
         m(h1, {
           onclick: Actions.unselectFeed
         }, 'IrisRSS'),
-        m(controls, [
-          m(h2, selectedFeedName),
+        m('div.bla', ['asiduh'])
+        // m(controls),
+          /*
+          // m(h2, selectedFeedName),
           m(buttons, [
             selectedFeed.get()
               ? m(markAsReadButton, { onclick: Actions.markAllAsRead })
@@ -59,6 +63,7 @@ export default function Header() {
             }),
           ]),
         ]),
+            */
       ];
     },
   };

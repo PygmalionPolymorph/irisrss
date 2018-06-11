@@ -17,5 +17,8 @@
   "homepage": "https://github.com/PygmalionPolymorph/irisrss#readme",
   "devDependencies": {
     "lerna": "^2.11.0"
+  },
+  "dependencies": {
+    "mithril": "^1.1.0"
   }
 }

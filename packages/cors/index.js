@@ -2,7 +2,7 @@ require('dotenv').config();
 const CORS = require('cors-anywhere');
 
 const {
-  CORS_PORT, = 1337,
+  CORS_PORT = 1337,
   CORS_HOST = 'localhost'
 } = process.env;
 

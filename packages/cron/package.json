@@ -8,5 +8,8 @@
   "dependencies": {
     "irisrss-feedservice": "^0.1.0",
     "node-cron": "^1.2.1"
+  },
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^2.13.1"
   }
 }

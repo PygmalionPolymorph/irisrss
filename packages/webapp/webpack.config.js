@@ -1,5 +1,7 @@
 const path = require('path');
 const HTMLPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+// const BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: {
@@ -14,7 +16,11 @@ module.exports = {
     fs: 'empty',
   },
   plugins: [
-    new HTMLPlugin(),
+    new HTMLPlugin({
+      template: 'src/index.html'
+    }),
+    new Dotenv(),
+    // new BundleAnalyzer(),
   ],
   module: {
     rules: [

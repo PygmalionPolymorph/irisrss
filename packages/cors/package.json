@@ -9,5 +9,8 @@
     "cors-anywhere": "^0.4.1",
     "dotenv": "^6.0.0",
     "irisrss-feedservice": "^0.1.0"
+  },
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^2.13.1"
   }
 }

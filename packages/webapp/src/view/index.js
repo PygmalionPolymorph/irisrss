@@ -4,10 +4,9 @@ import FeedList from './modules/feedList';
 import EntryList from './modules/entryList';
 import Header from './modules/header';
 
-import { bind, init } from '../reactions';
+import { bind } from '../reactions';
 
 function App() {
-  init();
   bind();
 
   return {

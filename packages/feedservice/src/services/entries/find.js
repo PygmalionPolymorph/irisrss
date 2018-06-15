@@ -23,5 +23,5 @@ const entriesForFeed = feed => findAllEntries()
   .map(extractEntries)
   .map(filterByFeed(feed));
 
-module.exports = { findAllEntries, findEntry, entriesForFeed };
+module.exports = { extractEntries, filterByFeed, findAllEntries, findEntry, entriesForFeed };
 

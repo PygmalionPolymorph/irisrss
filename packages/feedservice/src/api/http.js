@@ -1,13 +1,14 @@
 const { compose } = require('ramda');
-const { fromPromised } = require('folktale/concurrency/task');
+const { rejected, fromPromised } = require('folktale/concurrency/task');
 
 const applyCorsProxy = require('./cors');
 
 const httpGet = compose(
-  fromPromised(url => window.fetch(url, {
+  fromPromised(url => fetch(url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/xml',
+      'X-Requested-With': ''
     },
   })),
   applyCorsProxy,

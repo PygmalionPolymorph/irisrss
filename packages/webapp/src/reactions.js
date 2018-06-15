@@ -30,7 +30,7 @@ const updateEntryList = (feed) => {
   start
     .chain(findAllEntries)
     .map(extractEntries)
-    .map(es => (selected ? filterByFeed(selected)(es) : es))
+    .map(es => selected ? filterByFeed(selected)(es) : es)
     .map(ifElse(showOnlyUnread.get, onlyUnread, identity))
     .map(scopeEntries.set)
     .run();
@@ -56,14 +56,9 @@ export const bind = () => {
   const selectedEntry = scope(['entries', 'selected']);
   const showOnlyUnread = scope(['filters', 'onlyUnread'], '');
 
-  showOnlyUnread.$.map(() => updateEntryList());
+  showOnlyUnread.$.map(updateEntryList);
   selectedFeed.$.map(updateEntryList);
   selectedFeed.$.map(unreadCount);
   selectedEntry.$.map(markAsRead);
 };
 
-export const init = () => {
-  updateAllFeedEntries()
-    .map(tasks => tasks.map(task => task.run()))
-    .run();
-};

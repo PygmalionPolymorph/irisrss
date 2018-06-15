@@ -15,6 +15,9 @@
     "url": "https://github.com/PygmalionPolymorph/irisrss/issues"
   },
   "homepage": "https://github.com/PygmalionPolymorph/irisrss#readme",
+  "scripts": {
+    "dev": "lerna run dev --parallel"
+  },
   "devDependencies": {
     "lerna": "^2.11.0"
   },

@@ -1,10 +1,25 @@
-82 error execute callback with error
-83 error Error: Command failed: npm install
-83 error npm ERR! code ERR_STREAM_WRITE_AFTER_END
-83 error npm ERR! write after end
-83 error
-83 error npm ERR! A complete log of this run can be found in:
-83 error npm ERR!     /home/hephaistos/.npm/_logs/2018-06-10T10_53_36_152Z-debug.log
-83 error
-83 error     at Promise.all.then.arr (/usr/lib/node_modules/lerna/node_modules/execa/index.js:236:11)
-83 error     at <anonymous>
+0 silly input [ 'snabbdom' ]
+1 silly flags { _: [ 'add' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   dev: false,
+1 silly flags   D: false,
+1 silly flags   scope: '@irisrss-webapp',
+1 silly flags   args: [ 'snabbdom' ] }
+2 verbose rootPath /home/polymatheia/dev/me/irisrss
+3 info version 2.11.0
+4 silly isInitialized
+5 silly isInitialized true
+6 silly existsSync /home/polymatheia/dev/me/irisrss/VERSION
+7 info scope @irisrss-webapp
+8 error EPACKAGES Errored while collecting packages and package graph
+9 error Error: No packages found that match scope '@irisrss-webapp'
+9 error     at Function.filterPackages (/usr/lib/node_modules/lerna/lib/PackageUtilities.js:252:17)
+9 error     at AddCommand.runPreparations (/usr/lib/node_modules/lerna/lib/Command.js:333:60)
+9 error     at /usr/lib/node_modules/lerna/lib/Command.js:209:18
+9 error     at new Promise (<anonymous>)
+9 error     at AddCommand.run (/usr/lib/node_modules/lerna/lib/Command.js:193:14)
+9 error     at Object.handler (/usr/lib/node_modules/lerna/lib/commands/AddCommand.js:79:14)
+9 error     at Object.self.runCommand (/usr/lib/node_modules/lerna/node_modules/yargs/lib/command.js:233:22)
+9 error     at Object.Yargs.self._parseArgs (/usr/lib/node_modules/lerna/node_modules/yargs/yargs.js:990:30)
+9 error     at Object.Yargs.self.parse (/usr/lib/node_modules/lerna/node_modules/yargs/yargs.js:532:23)

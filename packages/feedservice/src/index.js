@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('isomorphic-fetch');
 
 const entries = require('./services/entries');
 const feeds = require('./services/feeds');

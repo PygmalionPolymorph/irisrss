@@ -1,4 +1,4 @@
-const { fromPromised, task, of } = require('folktale/concurrency/task');
+const { waitAll, fromPromised, task, of } = require('folktale/concurrency/task');
 const { map, head, groupBy, prop, values, traverse } = require('ramda');
 
 const fetchFeed = require('../../api/rss');
@@ -10,10 +10,12 @@ const { addUnreadCount } = require('../readState');
 
 
 // Feed -> Task [PouchDBResult]
-const updateFeedEntries = feed => fetchFeed(feed).chain(addEntries(feed.name));
+const updateFeedEntries = feed => console.log(feed) || fetchFeed(feed).chain(addEntries(feed.name));
 
 // _ -> Task [PouchDBResult]
-const updateAllFeedEntries = () => findAllFeeds().map(map(updateFeedEntries));
+const updateAllFeedEntries = () => findAllFeeds()
+  .map(map(updateFeedEntries))
+  .map(tasks => tasks.map(task => task.run()));
 
 // Feed -> Task PouchDBResult
 const updateDBFeed = fromPromised(feed => db.feeds.put(feed));

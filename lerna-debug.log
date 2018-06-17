@@ -1,25 +1,64 @@
-0 silly input [ 'snabbdom' ]
-1 silly flags { _: [ 'add' ],
+0 silly input [ 'dev' ]
+1 silly flags { _: [ 'run' ],
 1 silly flags   'reject-cycles': false,
 1 silly flags   rejectCycles: false,
-1 silly flags   dev: false,
-1 silly flags   D: false,
-1 silly flags   scope: '@irisrss-webapp',
-1 silly flags   args: [ 'snabbdom' ] }
-2 verbose rootPath /home/polymatheia/dev/me/irisrss
+1 silly flags   parallel: true,
+1 silly flags   script: 'dev',
+1 silly flags   args: [] }
+2 verbose rootPath /home/pallas/irisrss
 3 info version 2.11.0
-4 silly isInitialized
-5 silly isInitialized true
-6 silly existsSync /home/polymatheia/dev/me/irisrss/VERSION
-7 info scope @irisrss-webapp
-8 error EPACKAGES Errored while collecting packages and package graph
-9 error Error: No packages found that match scope '@irisrss-webapp'
-9 error     at Function.filterPackages (/usr/lib/node_modules/lerna/lib/PackageUtilities.js:252:17)
-9 error     at AddCommand.runPreparations (/usr/lib/node_modules/lerna/lib/Command.js:333:60)
-9 error     at /usr/lib/node_modules/lerna/lib/Command.js:209:18
-9 error     at new Promise (<anonymous>)
-9 error     at AddCommand.run (/usr/lib/node_modules/lerna/lib/Command.js:193:14)
-9 error     at Object.handler (/usr/lib/node_modules/lerna/lib/commands/AddCommand.js:79:14)
-9 error     at Object.self.runCommand (/usr/lib/node_modules/lerna/node_modules/yargs/lib/command.js:233:22)
-9 error     at Object.Yargs.self._parseArgs (/usr/lib/node_modules/lerna/node_modules/yargs/yargs.js:990:30)
-9 error     at Object.Yargs.self.parse (/usr/lib/node_modules/lerna/node_modules/yargs/yargs.js:532:23)
+4 silly existsSync /home/pallas/irisrss/VERSION
+5 silly initialize attempt
+6 silly initialize success
+7 silly execute attempt
+8 info run in 4 package(s): npm run dev
+9 silly runScriptInPackageStreaming [ 'dev', [], 'irisrss-cors' ]
+10 silly getExecOpts { cwd: '/home/pallas/irisrss/packages/cors' }
+11 silly runScriptInPackageStreaming [ 'dev', [], 'irisrss-cron' ]
+12 silly getExecOpts { cwd: '/home/pallas/irisrss/packages/cron' }
+13 silly runScriptInPackageStreaming [ 'dev', [], 'irisrss-db' ]
+14 silly getExecOpts { cwd: '/home/pallas/irisrss/packages/db' }
+15 silly runScriptInPackageStreaming [ 'dev', [], 'irisrss-webapp' ]
+16 silly getExecOpts { cwd: '/home/pallas/irisrss/packages/webapp' }
+17 error execute callback with error
+18 error Error: Command failed: npm run dev
+18 error Creating network "db_local" with the default driver
+18 error Creating couchdb ...
+18 error Creating couchdb
+18 error [1A[2KCreating couchdb ... [31merror[0m[1B
+18 error ERROR: for couchdb  Cannot create container for service couchdb: Conflict. The container name "/couchdb" is already in use by container "02dc8ae9084d676b22dfc63fdc8fdb318e1a65efa0115aa68011bbb39b1f2812". You have to remove (or rename) that container to be able to reuse that name.
+18 error
+18 error ERROR: for couchdb  Cannot create container for service couchdb: Conflict. The container name "/couchdb" is already in use by container "02dc8ae9084d676b22dfc63fdc8fdb318e1a65efa0115aa68011bbb39b1f2812". You have to remove (or rename) that container to be able to reuse that name.
+18 error Encountered errors while bringing up the project.
+18 error npm ERR! code ELIFECYCLE
+18 error npm ERR! errno 1
+18 error npm ERR! irisrss-db@0.1.0 start: `docker-compose up`
+18 error npm ERR! Exit status 1
+18 error npm ERR!
+18 error npm ERR! Failed at the irisrss-db@0.1.0 start script.
+18 error npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+18 error
+18 error npm ERR! A complete log of this run can be found in:
+18 error npm ERR!     /home/pallas/.npm/_logs/2018-06-16T12_05_13_715Z-debug.log
+18 error npm ERR! code ELIFECYCLE
+18 error npm ERR! errno 1
+18 error npm ERR! irisrss-db@0.1.0 dev: `npm run start`
+18 error npm ERR! Exit status 1
+18 error npm ERR!
+18 error npm ERR! Failed at the irisrss-db@0.1.0 dev script.
+18 error npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+18 error
+18 error npm ERR! A complete log of this run can be found in:
+18 error npm ERR!     /home/pallas/.npm/_logs/2018-06-16T12_05_13_765Z-debug.log
+18 error
+18 error
+18 error > irisrss-db@0.1.0 dev /home/pallas/irisrss/packages/db
+18 error > npm run start
+18 error
+18 error
+18 error > irisrss-db@0.1.0 start /home/pallas/irisrss/packages/db
+18 error > docker-compose up
+18 error
+18 error
+18 error     at Promise.all.then.arr (/usr/lib/node_modules/lerna/node_modules/execa/index.js:236:11)
+18 error     at <anonymous>

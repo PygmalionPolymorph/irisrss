@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build:dev": "webpack --mode='development'",
-    "dev": "webpack-serve ./webpack.config.js"
+    "dev": "webpack-serve --host 192.168.69.69 ./webpack.config.js"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.5.1",

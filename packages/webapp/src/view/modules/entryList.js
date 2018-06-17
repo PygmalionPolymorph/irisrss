@@ -1,5 +1,6 @@
 import m from 'mithril';
 import scope from 'kaleido';
+import { on } from 'flyd';
 import { slice } from 'ramda';
 
 import Entry from '../components/entry';
@@ -7,12 +8,22 @@ import Entry from '../components/entry';
 function EntryList() {
   const entries = scope(['entries', 'list'], []);
   const selectedEntry = scope(['entries', 'selected'], '');
+  const selectedEntryElement = scope(['entries', 'selectedElement'], '');
 
-  window.entries = entries;
+  on((elm) => {
+    if (!elm) return;
+    setTimeout(() => {
+      window.scrollTo({
+        top: Math.max(0, elm.offsetTop - 20),
+        behavior: 'smooth',
+      });
+    }, 100);
+  }, selectedEntryElement.$);
 
   const Actions = {
-    selectEntry: entry => () => {
+    selectEntry: entry => (e) => {
       selectedEntry.set(entry._id);
+      selectedEntryElement.set(e.target);
     },
   };
 

@@ -3,6 +3,7 @@
   --closetowhite: #f9f9f9;
   --black: #333;
   --lightgray: #eee;
+  --lightgray-off: #d7d7d7;
   --darkgray: #555;
   --main-color0: #f70e67;
   --main-color1: #67f70e;
@@ -26,7 +27,7 @@ body {
   overflow-x: hidden;
 }
 
-.app {
+.container {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: auto auto;
@@ -181,7 +182,8 @@ body {
 }
 
 .entry--read {
-  background-color: var(--closetowhite);
+  background-color: var(--lightgray);
+  border-color: var(--lightgray-off);
 }
 
 .entry--selected {

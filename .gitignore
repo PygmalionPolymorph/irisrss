@@ -5,3 +5,5 @@ lerna-debug.log
 yarn-error.log*
 dist/*
 .hoodie
+packages/cron/feeds
+packages/cron/entries

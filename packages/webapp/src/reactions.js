@@ -1,11 +1,11 @@
 import scope from 'kaleido';
 import { of } from 'folktale/concurrency/task';
-import { ifElse, assoc, last, identity, o, isNil } from 'ramda';
+import { nAry, assoc, last } from 'ramda';
 
 import { feeds, entries, readState } from 'irisrss-feedservice';
 
 const { addUnreadCount, onlyUnread } = readState;
-const { findFeed, updateAllFeedEntries, updateFeedEntries, updateFeed } = feeds;
+const { findFeed, updateFeedEntries, updateFeed } = feeds;
 const { findEntry, findAllEntries, extractEntries, filterByFeed, updateEntry } = entries;
 
 const unreadCount = (feed) => {
@@ -20,6 +20,7 @@ const unreadCount = (feed) => {
 
 const updateEntryList = (feed) => {
   const scopeEntries = scope(['entries', 'list']);
+  const selectedEntry = scope(['entries', 'selected']);
   const selectedFeed = scope(['feeds', 'selected']);
   const showOnlyUnread = scope(['filters', 'onlyUnread']);
 
@@ -31,7 +32,11 @@ const updateEntryList = (feed) => {
     .chain(findAllEntries)
     .map(extractEntries)
     .map(es => selected ? filterByFeed(selected)(es) : es)
-    .map(ifElse(showOnlyUnread.get, onlyUnread, identity))
+    .chain((es) => {
+      if (!showOnlyUnread.get()) return of(es);
+      if (!selectedEntry.get()) return of(onlyUnread(es));
+      return findEntry(selectedEntry).map(e => [e, ...onlyUnread(es)]);
+    })
     .map(scopeEntries.set)
     .run();
 };
@@ -56,7 +61,7 @@ export const bind = () => {
   const selectedEntry = scope(['entries', 'selected']);
   const showOnlyUnread = scope(['filters', 'onlyUnread'], '');
 
-  showOnlyUnread.$.map(updateEntryList);
+  showOnlyUnread.$.map(nAry(0, updateEntryList));
   selectedFeed.$.map(updateEntryList);
   selectedFeed.$.map(unreadCount);
   selectedEntry.$.map(markAsRead);
